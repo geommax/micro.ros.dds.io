@@ -32,3 +32,52 @@ cd ~/microros_ws/src/uros/micro-ROS-demos/rclc/ping_pong
 ./build/ping_pong/ping_pong
 
 စမ်းလို့မရသေး။ ရခါနီး
+
+##
+https://risc-v-getting-started-guide.readthedocs.io/en/latest/getting-zephyr.html
+
+> အထက်ပါ လင့်ကနေ zephyr sdk သွင်းပါ။
+
+1. Zephyr SDK Instllation.
+2. Micro-ROS Setup
+3. Initialize Zephyr Project
+
+=-=-=-=-=-=--
+#### Initialize Zephyr Project
+
+git clone https://github.com/zephyrproject-rtos/zephyr.git ~/workspace/zephyrproject/zephyr
+
+cd ~/workspace/zephyrproject
+west init -l zephyr
+
+west update
+west zephyr-export
+
+
+=-=-=-=-=-=-=-=-=-
+
+#### Micro ROS Setup
+
+git clone -b humble https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup
+
+
+> source /opt/ros/humble/setup.bash
+
+> rosdep update
+rosdep install --from-paths src --ignore-src -y
+
+> colcon build
+
+> source install/local_setup.bash
+
+
+=-=-=-=-=-=-=-=-=-
+
+### After Micro ROS Setup
+1. Creating firmware for zephyr platform host
+
+> export ZEPHYR_SDK_INSTALL_DIR=~/zephyr-sdk
+
+> export ZEPHYR_BASE=~/zephyrproject/zephyr
+
+> ros2 run micro_ros_setup create_firmware_ws.sh zephyr host
