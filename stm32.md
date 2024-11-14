@@ -1,4 +1,4 @@
-# RTOS + MICRO-ROS + STM32 
+# Zephyr RTOS + MICRO-ROS + STM32 
 
 > STLink For Ubuntu
 
