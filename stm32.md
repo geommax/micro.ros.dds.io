@@ -20,6 +20,15 @@ https://github.com/stlink-org/stlink/blob/testing/doc/tutorial.md
 
 > ros2 run micro_ros_setup create_firmware_ws.sh zephyr stm32f4_disco
 
+Sometimes, increasing the Git buffer size can resolve such network errors. Try the following:
+
+> git config --global http.postBuffer 524288000
+
+> rm -rf firmware
+
+> ros2 run micro_ros_setup create_firmware_ws.sh zephyr stm32f4_disco
+This command sets the buffer to 500 MB, which helps in handling large repositories like Zephyr.
+
 
 
 Integrating **micro-ROS** with your STM32F407VG DISC1 board using Zephyr and FreeRTOS requires several steps, as micro-ROS relies on the **ROS 2** ecosystem to bring ROS 2 functionality to microcontrollers. Here’s how to get started:
